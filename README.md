@@ -6,6 +6,6 @@
 
 # Kylli
 
-# LīgaC
+# LīgaC - I currently work in radiotherapy in Riga. I joined WoTech to learn new skills, to meet new people and possibly change my workfield to IT. 
 
 # Eve
