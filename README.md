@@ -2,7 +2,7 @@
 
 # We are Team - 27. We have 4 members: 
 
-# Teisi Timma
+# Teisi Timma - I'm Estonian and working in aviation. I decided to apply to WoTech to improve my IT knowledge and skills.
 
 # Kylli
 
