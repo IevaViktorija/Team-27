@@ -6,6 +6,7 @@ We are Team-27, comprising four talented members:
 I'm Estonian and working in aviation. I decided to apply to WoTech to improve my IT knowledge and skills.
 
 ### 👩‍💻 Kylli 
+I`m from Estonia and working as project manager and CEO in CLT modular house factory called Aatomik Houses. I`m always wanted to study programming but life had somehow different plans for me. So I studied economy and marketing, create couple of companyes, had children etc. When I saw WoTech add, I thought that this is my last chance. Probably its too late for me to become an exellent programmer, but I really wanted to give myself an opportunity at least to try.
 
 
 ### 👩‍💻 LīgaC 
