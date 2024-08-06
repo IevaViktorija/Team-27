@@ -1,0 +1,72 @@
+Task #1
+```py
+water_pokemons = pokemon_df[pokemon_df['Type 1'] == 'Water'].shape[0]
+percentage_water_pokemons = (water_pokemons / pokemon_df.shape[0]) * 100
+
+print(f"Percentage of Pokémon with 'Type 1' == Water: {percentage_water_pokemons:.2f}%")
+```
+
+Task #2
+```py
+# 1st version:
+fastest_pokemon_df = pokemon_df[pokemon_df['Speed'] >= 80]
+fastest_pokemon_count = len(fastest_pokemon_df)
+
+print(f"Number of Pokémon with 'Speed' >= 80  - is {fastest_pokemon_count} pokemons in total.")
+sorted_fastest_pokemon_df = fastest_pokemon_df.sort_values(by='Speed', ascending=False)# to show in descending order by speed
+sorted_fastest_pokemon_df.head()# only for visualization
+
+# 2nd version:
+max_speed = pokemon_df['Speed'].max()
+min_speed = pokemon_df['Speed'].min()
+difference_speed = max_speed - min_speed
+
+print(f"Maximum Speed: {max_speed}")
+print(f"Minimum Speed: {min_speed}")
+print(f"Difference between Max and Min Speed: {difference_speed}")
+```
+
+Task #3
+```py
+
+# 1st version:
+filtered_df = pokemon_df[pokemon_df['Speed'] >= 80]
+
+num_pokemon = filtered_df.shape[0]
+
+print(f"Number of Pokémon with Speed >= 80: {num_pokemon}")
+
+# Visualization using a bar chart
+plt.figure(figsize=(20, 20))
+plt.bar(filtered_df['Name'], filtered_df['Speed'], color='blue', edgecolor='black')
+plt.xlabel('Pokémon Name', fontsize=4)
+plt.ylabel('Speed')
+plt.title('Pokémon with Speed >= 80')
+plt.xticks(rotation=45, ha='right')  # Rotates x-axis labels
+
+plt.show()
+
+# 2nd version:
+# Filter DF to show Pokémon with Speed >= 80, HISTOGRAM
+filtered_df = pokemon_df[pokemon_df['Speed'] >= 80]
+
+plt.figure(figsize=(10, 6))
+plt.hist(filtered_df['Speed'], bins=5, color='blue', edgecolor='black', alpha=0.7)
+
+plt.xlabel('Speed')
+plt.ylabel('Frequency')
+plt.title('Histogram of Pokémon Speeds (Speed >= 80)')
+
+plt.show()
+```
+
+Task #4
+```py
+#(DIFFICULT) Find Pokémon with the longest name (excluding spaces)? What is this pokemons name?
+longest_name_of_pokemon = pokemon_df.loc[pokemon_df['Name'].apply(lambda x: len(x.replace(" ", ""))).idxmax()]#calculate length of each Pokémon's name without spaces, find the index of the longest name, and select the matching  row
+print(f"Pokémon with the longest name (excluding spaces) is {longest_name_of_pokemon['Name']}.")
+```
+
+
+
+
