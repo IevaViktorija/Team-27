@@ -1,0 +1,121 @@
+//CheeseShopController:
+
+package com.datorium.Datorium.API.Controllers;
+
+import com.datorium.Datorium.API.DTO.UpdateCheeseShopDTO;
+import com.datorium.Datorium.API.DTO.CheeseShop;
+import com.datorium.Datorium.API.Services.CheeseShopService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/cheeseshop")
+public class CheeseShopController {
+    private CheeseShopService cheeseShopService;
+    public CheeseShopController(){
+        cheeseShopService = new CheeseShopService();
+    }
+
+    @PostMapping("/add") //localhost:8080/cheeseShop/add
+    public int add(@RequestBody CheeseShop cheeseShop){
+        return cheeseShopService.add(cheeseShop);
+    }
+
+    @GetMapping("/get")
+    public ArrayList<CheeseShop> get(){
+        return cheeseShopService.get();
+    }
+
+    @PostMapping("/update")
+    public CheeseShop update(@RequestBody UpdateCheeseShopDTO updateCheeseShopDTO){
+        return cheeseShopService.update(updateCheeseShopDTO.cheeseShopIndex, updateCheeseShopDTO.cheeseShop);
+    }
+}
+
+// DTO/CheeseShop
+package com.datorium.Datorium.API.DTO;
+
+public class CheeseShop {
+    public String name;
+}
+
+
+// DTO/UpdateCheeseShopDTO
+package com.datorium.Datorium.API.DTO;
+
+import java.util.ArrayList;
+
+public class UpdateCheeseShopDTO {
+    public CheeseShop cheeseShop;
+    public int cheeseShopIndex;
+}
+
+
+//CheeseShopRepo
+package com.datorium.Datorium.API.Repo;
+import com.datorium.Datorium.API.DTO.CheeseShop;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CheeseShopRepo {
+
+    private ArrayList<CheeseShop> cheeseShops = new ArrayList<>();
+
+    public int add(CheeseShop cheeseShop){
+        cheeseShops.add(cheeseShop);
+        return cheeseShops.size();
+    }
+
+    public CheeseShop update(int cheeseShopIndex, CheeseShop updateCheeseShopDTO){
+        var cheeseShop = cheeseShops.get(cheeseShopIndex);
+        cheeseShop.name = updateCheeseShopDTO.name;
+        return cheeseShop;
+    }
+
+    public ArrayList<CheeseShop> get(){
+        return cheeseShops;
+    }
+}
+
+
+//CheeseShopService
+package com.datorium.Datorium.API.Services;
+
+import com.datorium.Datorium.API.DTO.CheeseShop;
+import com.datorium.Datorium.API.Repo.CheeseShopRepo;
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class CheeseShopService {
+    private CheeseShopRepo cheeseShopRepo;
+    public CheeseShopService() {
+        cheeseShopRepo = new CheeseShopRepo();
+
+    }
+
+    public int add(CheeseShop cheeseShop) {
+
+        return cheeseShopRepo.add(cheeseShop);
+    }
+
+    public ArrayList<CheeseShop> get(){
+        return cheeseShopRepo.get();
+    }
+
+    public CheeseShop update(int cheeseShopIndex, CheeseShop updateCheeseShopDTO){
+        return cheeseShopRepo.update(cheeseShopIndex, updateCheeseShopDTO);
+    }
+}
+
+
+
