@@ -1,0 +1,31 @@
+SUMMARIZE:
+Q1: What is an error rate?
+A: frequency at which errors occurs.
+
+Q2: Where you could use other machine-learning models?
+A: Recommendation systems, Social media connections, Image recognition, Natural language processing (NLP), Virtual personal assistants, Stock market predictions, Credit card fraud detection, Traffic predictions, Self-driving car technology, Facial recognition, Email automation and spam filtering, Healthcare advancement etc.
+
+Q3: What is the difference between supervised and unsupervised training?
+A:Supervised learning uses labeled training data, and unsupervised learning does not.
+
+Q4: How to import different models from the scikit-learn package?
+A: You can import as many models as you need by simply adding the corresponding import statements.For example: Linear Regression (```from sklearn.linear_model import LinearRegression```); Logistic Regression (```from sklearn.linear_model import LogisticRegression```) and Decision Tree (```from sklearn.tree import DecisionTreeClassifier # for classification; from sklearn.tree import DecisionTreeRegressor # for regression```)
+
+Q5: How can you evaluate the performance of a machine learning model in scikit-learn?
+A: Evaluating involves using a variety of metrics depending on the type of problem you're solving: classification or regression.
+
+Q6: What metrics are commonly used for evaluation?
+A: 
+Classification: Accuracy, precision, recall, F1-score, ROC-AUC, confusion matrix, and classification report.
+Regression: Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and R-squared (R²).
+Cross-Validation: K-fold cross-validation and GridSearchCV for model tuning and generalization evaluation.
+
+Q7: What is model overfitting, and how can it be prevented?
+A: Model overfitting occurs when a model learns the noise and details in the training data too well, leading to poor performance on unseen data. It can be prevented by:
+Using cross-validation
+Regularization (e.g., L1, L2)
+Reducing model complexity
+Pruning decision trees
+Adding more data
+Using early stopping in iterative models
+
