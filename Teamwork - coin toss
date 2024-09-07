@@ -64,4 +64,46 @@ for n_trials in trial_sets:
     print(f"Probabilities of outcomes: {probabilities}\n")
 ```
 
+2nd VERSION
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+np.random.seed(42)  
+num_trials = 500  
+
+coin_tosses = np.random.randint(0, 2, size=(num_trials, 2))
+
+outcome_map = {0: 'H', 1: 'T'}
+outcomes = [outcome_map[coin1] + outcome_map[coin2] for coin1, coin2 in coin_tosses]
+
+outcome_counts = pd.Series(outcomes).value_counts()
+
+probabilities = outcome_counts / num_trials
+
+df = pd.DataFrame({
+    'Outcome': outcome_counts.index,
+    'Frequency': outcome_counts.values,
+    'Probability': probabilities.values
+})
+
+print(df)
+
+plt.figure(figsize=(8, 6))
+
+plt.subplot(1, 2, 1)
+plt.bar(df['Outcome'], df['Frequency'], color=['gray', 'pink', 'purple', 'lightblue'])
+plt.title('Frequency of Coin Toss Outcomes')
+plt.xlabel('Outcome')
+plt.ylabel('Frequency')
+
+plt.subplot(1, 2, 2)
+plt.pie(df['Probability'], labels=df['Outcome'], autopct='%1.2f%%', colors=['gray', 'pink', 'purple', 'lightblue'])
+plt.title('Probabilities of Coin Toss Outcomes')
+
+plt.tight_layout()
+plt.show()```
+
 
