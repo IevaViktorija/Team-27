@@ -106,4 +106,50 @@ plt.title('Probabilities of Coin Toss Outcomes')
 plt.tight_layout()
 plt.show()```
 
+3rd VERSION
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+from collections import Counter
+
+# Simulation parameters
+num_trials = 1000  # Number of trials (tosses)
+
+# Define the outcomes for two coin tosses
+outcomes = ['HH', 'HT', 'TH', 'TT']
+
+# Function to simulate coin tosses
+def simulate_coin_tosses(trials):
+    result = []
+    for _ in range(trials):
+        # Toss two coins simultaneously
+        coin1 = np.random.choice(['H', 'T'])
+        coin2 = np.random.choice(['H', 'T'])
+        outcome = coin1 + coin2
+        result.append(outcome)
+    return result
+
+# Run the simulation
+results = simulate_coin_tosses(num_trials)
+
+# Count the occurrences of each outcome
+outcome_counts = Counter(results)
+
+# Calculate frequencies and probabilities
+frequencies = [outcome_counts[outcome] for outcome in outcomes]
+probabilities = [freq / num_trials for freq in frequencies]
+
+# Visualize the results using a bar chart
+plt.figure(figsize=(8, 6))
+plt.bar(outcomes, frequencies, color=['pink', 'yellow', 'red', 'orange'])
+plt.title(f"Frequencies of Outcomes in {num_trials} Coin Tosses")
+plt.xlabel("Outcomes")
+plt.ylabel("Frequencies")
+plt.show()
+
+# Visualize the results using a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(frequencies, labels=outcomes, autopct='%1.1f%%', colors=['pink', 'yellow', 'red', 'orange'])
+plt.title(f"Probabilities of Outcomes in {num_trials} Coin Tosses")
+plt.show()```
 
