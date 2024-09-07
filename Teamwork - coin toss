@@ -1,0 +1,67 @@
+Design a simulation where you toss two coins simultaneously. Record the possible outcomes (heads or tails for each coin) and run the simulation for multiple trials (e.g., 100, 500, or 1000 tosses). After collecting the data:
+
+Calculate the probabilities of each outcome (HH, HT, TH, TT).
+Visualize the results using a bar chart or pie chart to represent the frequencies and probabilities of each outcome.
+Analyze whether the results align with the expected theoretical probabilities.
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+from collections import Counter
+
+# Step 1: Define the function to simulate coin tosses
+def simulate_coin_tosses(n_trials):
+    outcomes = []
+    for _ in range(n_trials):
+        toss_1 = np.random.choice(['H', 'T'])
+        toss_2 = np.random.choice(['H', 'T'])
+        outcomes.append(toss_1 + toss_2)  # Record the combined outcome (e.g., 'HH', 'HT', etc.)
+    return outcomes
+
+# Step 2: Run the simulation for multiple sets of trials
+trial_sets = [100, 500, 1000]  # Simulate for 100, 500, and 1000 tosses
+results = {}
+
+for n_trials in trial_sets:
+    outcomes = simulate_coin_tosses(n_trials)
+    outcome_counts = Counter(outcomes)
+    total_outcomes = sum(outcome_counts.values())
+    probabilities = {outcome: count / total_outcomes for outcome, count in outcome_counts.items()}
+    results[n_trials] = (outcome_counts, probabilities)  # Store frequencies and probabilities for each set
+
+# Step 3: Visualize the results using bar charts for each set of trials
+labels = ['HH', 'HT', 'TH', 'TT']
+colors = ['blue', 'green', 'orange', 'red']
+
+fig, axs = plt.subplots(len(trial_sets), 2, figsize=(10, 5 * len(trial_sets)))
+
+for idx, n_trials in enumerate(trial_sets):
+    outcome_counts, probabilities = results[n_trials]
+    
+    counts = [outcome_counts['HH'], outcome_counts['HT'], outcome_counts['TH'], outcome_counts['TT']]
+    probs = [probabilities['HH'], probabilities['HT'], probabilities['TH'], probabilities['TT']]
+    
+    # Bar chart for frequencies
+    axs[idx, 0].bar(labels, counts, color=colors)
+    axs[idx, 0].set_title(f'Frequencies of Outcomes (n={n_trials})')
+    axs[idx, 0].set_xlabel('Outcome')
+    axs[idx, 0].set_ylabel('Count')
+    
+    # Bar chart for probabilities
+    axs[idx, 1].bar(labels, probs, color=colors)
+    axs[idx, 1].set_title(f'Probabilities of Outcomes (n={n_trials})')
+    axs[idx, 1].set_xlabel('Outcome')
+    axs[idx, 1].set_ylabel('Probability')
+
+plt.tight_layout()
+plt.show()
+
+# Step 4: Print the results for each set of trials
+for n_trials in trial_sets:
+    outcome_counts, probabilities = results[n_trials]
+    print(f"Results for {n_trials} tosses:")
+    print(f"Frequencies of outcomes: {outcome_counts}")
+    print(f"Probabilities of outcomes: {probabilities}\n")
+```
+
+
